@@ -26,8 +26,7 @@ public class Cliente {
 	private Long id;
 	
 	@NotBlank
-	@Size(max=60)
-	
+	@Size(max=60)	
 	private String nome;
 	
 	@NotBlank
