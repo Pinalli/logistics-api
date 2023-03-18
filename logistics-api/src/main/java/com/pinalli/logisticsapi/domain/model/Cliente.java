@@ -8,7 +8,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import com.pinalli.logisticsapi.domain.validationgroups.ValidationGroups;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -20,6 +23,8 @@ import lombok.Setter;
 @Setter
 @Entity
 public class Cliente {
+	
+	@NotNull(groups = ValidationGroups.ClienteId.class)
 	@EqualsAndHashCode.Include
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
