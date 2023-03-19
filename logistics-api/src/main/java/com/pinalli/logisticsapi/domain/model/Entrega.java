@@ -2,6 +2,7 @@ package com.pinalli.logisticsapi.domain.model;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
@@ -36,28 +37,19 @@ public class Entrega {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@Valid
-	@ConvertGroup(from = Default.class, to = ValidationGroups.ClienteId.class)
-	@NotNull
 	@ManyToOne	
-	private Cliente cliente;
-	
-	@Valid
-	@NotNull	
+	private Cliente cliente;	
+		
 	@Embedded
 	private Destinatario destinatario;
 	
-	@NotNull
-	private BigDecimal taxa;
+	private BigDecimal taxa;	
 	
-	@JsonProperty(access = Access.READ_ONLY)
 	@Enumerated(EnumType.STRING)
-	private StatusEntrega status;
+	private StatusEntrega status;	
 	
-	@JsonProperty(access = Access.READ_ONLY)
-	private LocalDateTime dataPedido;
-	
-	@JsonProperty(access = Access.READ_ONLY)
-	private LocalDateTime dataFinalizacao;
+	private OffsetDateTime dataPedido;	
+
+	private OffsetDateTime  dataFinalizacao;
 		
 }

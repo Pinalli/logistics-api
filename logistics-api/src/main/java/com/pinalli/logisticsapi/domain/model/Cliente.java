@@ -22,26 +22,25 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-public class Cliente {
+public class Cliente {	
 	
-	@NotNull(groups = ValidationGroups.ClienteId.class)
 	@EqualsAndHashCode.Include
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
 	@NotBlank
-	@Size(max=60)	
+	@Size(max = 60)	
 	private String nome;
 	
 	@NotBlank
 	@Email
-	@Size(max=200)
+	@Size(max = 200)
 	private String email;
 	
 	@NotBlank
-	@Size(max=11)
-	@Size(max=200)
+	@Size(max = 11)
+	@Size(max = 200)
 	@Column(name="fone")
 	private String telefone;
 }
