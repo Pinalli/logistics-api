@@ -24,6 +24,7 @@ import javax.validation.groups.Default;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
+import com.pinalli.logisticsapi.domain.exception.NegocioException;
 import com.pinalli.logisticsapi.domain.validationgroups.ValidationGroups;
 
 import lombok.EqualsAndHashCode;
@@ -71,5 +72,18 @@ public class Entrega {
 		
 		
 	}
-		
+
+	public void finalizar() {
+		if(naoPodeSerFinalizada()) {
+			throw new NegocioException("A Entrega não pode ser finalizada");
+		}
+		setStatus(StatusEntrega.FINALIZADA);
+		setDataFinalizacao(OffsetDateTime.now());		
+	}
+		public boolean podeSerFinalizada() {
+			return StatusEntrega.PENDENTE.equals(getStatus());
+		}
+		public boolean naoPodeSerFinalizada() {
+			return !podeSerFinalizada();
+		}
 }
